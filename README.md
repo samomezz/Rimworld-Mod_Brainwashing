@@ -47,3 +47,11 @@ Physically wash the brain til it squeaks. Rewire their brain so they like your i
 Available to all ideologies, requiring only a moralist, a lecturn and a ritual location, all your colonists can participate, gaining or losing certainty towards your ideology—depending on ritual quality (but mainly luck), colonists can gain up to 100 certainty points, or lose up to 30.
 
 [![](https://i.imgur.com/ERuxYuR.png)](https://buymeacoffee.com/samomezz)
+
+#Download Link:
+**[Current Version Direct](https://clk.wiki/Brainwashing1_5_1)**
+**[Current Version Mirror](https://clk.wiki/Brainwashing1_5_1mirror)**
+
+### To install:
+
+Place in Mods folder in game install directory. Requires Biotech and Ideology DLC (may require other DLCs as well? I haven't bothered to check yet)
