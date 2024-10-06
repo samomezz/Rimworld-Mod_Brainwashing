@@ -7,15 +7,15 @@ Converting pesky pawns to your ideoligion is now easier and less ethical than ev
 Yes this source code is all in one file, don't worry about it.
 
 # What does this mod add? 
-1 new Building:
+### 1 new Building:
 ## Propaganda speaker 
 Passively convert pawns (to the primary ideology of your faction) by pumping propaganda directly into their ears! Once per day per pawn, this speaker will give a tiny boost towards your ideology to all pawns that come near enough to listen.
 	
-1 new trait:
+### 1 new trait:
 ## Propaganda resistant trait 
 Pawns with this trait will be unhappy when subjected to propaganda. Proportionate to their intellectual skill, they will also be less swayed by it.
 	
-1 new surgery involving 3 new ingredients:
+### 1 new surgery involving 3 new ingredients:
 ## Brainwashers
 Brainwasher Mk.'s 1-3—Used in brainwashing surgery, produced at machining tables. Each increase in Mk# increases the safety of the operation.
 
@@ -42,7 +42,7 @@ Physically wash the brain til it squeaks. Rewire their brain so they like your i
 		-Wander Sad (1 in 4)
 	-Worry not though, there is a **3 in 7 chance your pawn will be perfectly fine** and won't have even noticed they were brainwashed (3 in 4)
 	
-1 new ritual:
+### 1 new ritual:
 ## Hold a Mass
 Available to all ideologies, requiring only a moralist, a lecturn and a ritual location, all your colonists can participate, gaining or losing certainty towards your ideology—depending on ritual quality (but mainly luck), colonists can gain up to 100 certainty points, or lose up to 30.
 
