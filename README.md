@@ -48,7 +48,7 @@ Available to all ideologies, requiring only a moralist, a lecturn and a ritual l
 
 [![](https://i.imgur.com/ERuxYuR.png)](https://buymeacoffee.com/samomezz)
 
-#Download Link:
+# Download Link:
 **[Current Version Direct](https://clk.wiki/Brainwashing1_5_1)**
 **[Current Version Mirror](https://clk.wiki/Brainwashing1_5_1mirror)**
 
