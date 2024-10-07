@@ -49,8 +49,13 @@ Available to all ideologies, requiring only a moralist, a lecturn and a ritual l
 [![](https://i.imgur.com/ERuxYuR.png)](https://buymeacoffee.com/samomezz)
 
 # Download Link:
-**[Current Version Direct](https://clk.wiki/Brainwashing1_5_1)**
-**[Current Version Mirror](https://clk.wiki/Brainwashing1_5_1mirror)**
+(Yes, download links go through 4 pages of ads and yes that it annoying. However, you are downloading a mod off of github instead of the steam workshop, I suspect you may have torrented the game so I don't care.)
+**[Current Version (1.5.2) Direct](https://clk.wiki/Brainwashing1_5_2Direct)**
+**[Current Version (1.5.2) Mirror](https://clk.wiki/Brainwashing1_5_2Mirror)**
+[Version 1.5.1 Direct](https://clk.wiki/Brainwashing1_5_1)
+[Version 1.5.1 Mirror](https://clk.wiki/Brainwashing1_5_1mirror)
+
+Version number is (game version).(mod version) i.e. 1.5.1 is mod version 1 for Rimworld 1.5
 
 ### To install:
 
