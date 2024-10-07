@@ -16,6 +16,8 @@ namespace Brainwashing
         public bool EnableFactionViolation = true;
         public bool DisableAllSideEffects = false;
         public float CancerRangeDays = 173f;
+        public bool PropagandaCooldown = true;
+        public float NoPropagandaCooldownRarity = 1f;
 
         public bool EnableDebugSettings = false;
         public bool Debug_TestCatastrophicOutcomes = false;
@@ -30,7 +32,9 @@ namespace Brainwashing
             Scribe_Values.Look(ref EnableSkillLoss, "EnableSkillLoss", true);
             Scribe_Values.Look(ref EnableCancer, "EnableCancer", true);
             Scribe_Values.Look(ref EnableFactionViolation, "EnableFactionViolation", true);
+            Scribe_Values.Look(ref PropagandaCooldown, "PropagandaCooldown", true);
             Scribe_Values.Look(ref DisableAllSideEffects, "DisableAllSideEffects", false);
+            Scribe_Values.Look(ref NoPropagandaCooldownRarity, "NoPropagandaCooldownRarity", 1f);
 
             Scribe_Values.Look(ref EnableDebugSettings, "EnableDebugSettings", false);
             Scribe_Values.Look(ref Debug_TestCatastrophicOutcomes, "Debug_TestCatastrophicOutcomes", false);
@@ -56,7 +60,9 @@ namespace Brainwashing
             settings.EnableSkillLoss = true;
             settings.EnableCancer = true;
             settings.EnableFactionViolation = true;
+            settings.PropagandaCooldown = true;
             settings.DisableAllSideEffects = false;
+            settings.NoPropagandaCooldownRarity = 1f;
 
             settings.EnableDebugSettings = false;
             settings.Debug_TestCatastrophicOutcomes = false;
@@ -75,6 +81,8 @@ namespace Brainwashing
             listingStandard.CheckboxLabeled("Enable Skill Loss Chance", ref settings.EnableSkillLoss, "Enables the die to roll on skill loss after brainwashing");
             listingStandard.CheckboxLabeled("Enable Cancer Chance", ref settings.EnableCancer, "Enables the rare (1 in 100) chance that the Mk1 will cause extensive carcinoma within 172 days");
             listingStandard.CheckboxLabeled("Enable Faction Violation", ref settings.EnableFactionViolation, "Enables brainwashing surgery to count as a violation towards the brainwashed pawn's faction");
+            listingStandard.CheckboxLabeled("Do Propaganda Effect Cooldown", ref settings.PropagandaCooldown, "Whether or not propaganda will work before previous mood change is lost. If disabled, propaganda will work on pawns at random.");
+            settings.NoPropagandaCooldownRarity = listingStandard.SliderLabeled("No Propaganda Cooldown Rarity: " + (settings.NoPropagandaCooldownRarity * 33.3333f ).ToString() + "%", settings.NoPropagandaCooldownRarity, 0f, 3f, 0.5f, "Likelihood modifier for propaganda speakers. Higher = more likely");
             listingStandard.CheckboxLabeled("Disable All Side Effects", ref settings.DisableAllSideEffects, "Disables all side effects; if true, the above settings are overruled.");
             listingStandard.Label("");
             listingStandard.Label("Debugging settings");
@@ -164,6 +172,10 @@ namespace Brainwashing
 				
 			}
 	}
+        [MayRequireAnomaly]
+        private HediffDef blissLobo = HediffDefOf.BlissLobotomy;
+        [MayRequireAnomaly]
+        private HediffDef psychicDead = HediffDefOf.PsychicallyDead;
         private void Brainwash(Pawn pawn, List<Thing> ingredients, Pawn billDoer, out string messageAddendum)
         {
             Dictionary<MentalStateDef, string> adverseReactions = new Dictionary<MentalStateDef, string>();
@@ -265,7 +277,7 @@ namespace Brainwashing
                 adverseSideEffectOccurred = true;
                 List<HediffDef> RareSideEffects = new List<HediffDef>();
                 RareSideEffects.Add(HediffDefOf.Blindness);
-                RareSideEffects.Add(HediffDefOf.BlissLobotomy);
+                if(blissLobo != null) { RareSideEffects.Add(blissLobo); }
                 RareSideEffects.Add(HediffDefOf.Blindness);
                 RareSideEffects.Add(HediffDefOf.CatatonicBreakdown);
                 RareSideEffects.Add(HediffDefOf.Dementia);
@@ -290,7 +302,7 @@ namespace Brainwashing
             {
                 adverseSideEffectOccurred = true;
                 List<HediffDef> CommonSideEffects = new List<HediffDef>();
-                CommonSideEffects.Add(HediffDefOf.PsychicallyDead);
+                if (psychicDead != null) { CommonSideEffects.Add(psychicDead); }
                 CommonSideEffects.Add(HediffDefOf.Heatstroke);
 
                 if (!pawn.Downed && !pawn.InMentalState && pawn.health.CanCrawlOrMove)
@@ -308,7 +320,6 @@ namespace Brainwashing
                 adverseSideEffectOccurred = true;
                 List<HediffDef> ObligatorySideEffects = new List<HediffDef>();
                 ObligatorySideEffects.Add(HediffDefOf.MorningSickness);
-                ObligatorySideEffects.Add(HediffDefOf.ScanningSickness);
                 adverseSideEffects.Add(ObligatorySideEffects[Rand.Range(0, ObligatorySideEffects.Count)]);
                 if (skill)
                 {
@@ -374,18 +385,22 @@ namespace Brainwashing
         }
         public Thought_Memory GiveObservedThought(Pawn observer)
         {
-            if(Power.PowerOn) { return null; }
+            if (!Power.PowerOn) { return null; }
             List<Thought> thoughts = new List<Thought>();
             observer.needs.mood.thoughts.GetAllMoodThoughts(thoughts);
+            bool affectPawn = Rand.Chance(0.333f * LoadedModManager.GetMod<Brainwashing_Mod>().GetSettings<Brainwashing_ModSettings>().NoPropagandaCooldownRarity);
             if (thoughts.Count > 0)
             {
                 foreach (Thought t in thoughts) {
-                    if(t.def == BrainwashingDefOf.SwayedByPropaganda || t.def == BrainwashingDefOf.HeardPropaganda)
+                    if (t.def == BrainwashingDefOf.SwayedByPropaganda || t.def == BrainwashingDefOf.HeardPropaganda)
                     {
-                        return null;
+                        return LoadedModManager.GetMod<Brainwashing_Mod>().GetSettings<Brainwashing_ModSettings>().PropagandaCooldown ? null : affectPawn ? DoPropaganda(observer) : null;
                     }
                 }
             }
+            return affectPawn ? DoPropaganda(observer) : null;
+        }
+        public Thought_Memory DoPropaganda(Pawn observer) { 
             bool isResistant = observer.story.traits.HasTrait(BrainwashingDefOf.PropagandaResistant);
             float coef = isResistant ? 1f / Mathf.Sqrt(Mathf.Clamp(observer.skills.GetSkill(SkillDefOf.Intellectual).levelInt, 1f, 16f)) : 1f;
             if (observer.Ideo != TargetIdeo)

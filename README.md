@@ -54,4 +54,4 @@ Available to all ideologies, requiring only a moralist, a lecturn and a ritual l
 
 ### To install:
 
-Place in Mods folder in game install directory. Requires Biotech and Ideology DLC (may require other DLCs as well? I haven't bothered to check yet)
+Place in Mods folder in game install directory. Requires Ideology DLC
