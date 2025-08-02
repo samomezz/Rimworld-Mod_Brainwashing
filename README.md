@@ -4,8 +4,6 @@ Converting pesky pawns to your ideoligion is now easier and less ethical than ev
 
 [Steam Page](https://steamcommunity.com/sharedfiles/filedetails/?id=3343993810)
 
-Yes this source code is all in one file, don't worry about it.
-
 # What does this mod add? 
 ### 1 new Building:
 ## Propaganda speaker 
@@ -19,6 +17,7 @@ Pawns with this trait will be unhappy when subjected to propaganda. Proportionat
 ## Brainwashers
 Brainwasher Mk.'s 1-3—Used in brainwashing surgery, produced at machining tables. Each increase in Mk# increases the safety of the operation.
 
+Technically not a brainwasher (lore-wise, it is identical in function however): Ideology chip -> far far far far safer than the brainwashers due to its advanced sciency mumbo jumbo. Costs more to produce and is always successful at conversions.
 ## Surgical brainwashing 
 Physically wash the brain til it squeaks. Rewire their brain so they like your ideas; it's good fun for the whole family! Except for those pawns who receive side effects. Requires medical and intellectual skill of 6. Side effects and other adverse reactions may include **(incidence rates listed are for Mk1; Mk2 and 3 are respectively 1.41x & 1.73x safer)**:
 	-Brain cancer (Only occurs when using Mk.1 brainwashers at a rate of 1 in 200)
