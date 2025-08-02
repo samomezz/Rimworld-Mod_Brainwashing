@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ModMetaData>
+    <name>Brainwashing Technologies</name>
+    <author>samomezz</author>
+    <packageId>samomezz.Brainwashing</packageId>
+    <supportedVersions>
+        <li>1.5</li>
+        <li>1.6</li>
+    </supportedVersions>
+    <description>Converting pesky pawns to your ideoligion is now easier and less ethical than ever! Adds propaganda speakers, brainwashing surgeries, and mass (the church kind).
+	</description>
+</ModMetaData>

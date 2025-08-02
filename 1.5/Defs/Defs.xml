@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingCategoryDef>
+		<defName>Brainwashers</defName>
+		<label>brainwashers</label>
+		<parent>Root</parent>
+		<iconPath>UI/Icons/ThingCategories/Manufactured</iconPath>
+		<resourceReadoutRoot>true</resourceReadoutRoot>
+  </ThingCategoryDef>
+	<ResearchProjectDef>
+    <defName>BrainwashingDevices</defName>
+    <label>brainwashing devices</label>
+    <description>Brain hygeine is essential to maintaining an efficient autocracy.</description>
+    <baseCost>1000</baseCost>
+    <techLevel>Industrial</techLevel>
+	<prerequisites>
+      <li>Prosthetics</li>
+    </prerequisites>
+    <researchViewX>9.00</researchViewX>
+    <researchViewY>6</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->brainwashing devices</li>
+
+        <li>subject_story->perfected the psychology of video propaganda</li>
+        <li>subject_story->published a paper about altering subjects' attitudes using nanobot-based neurotransmitters</li>
+        <li>subject_story->worked in a top-secret state-funded brainwashing program</li>
+
+        <li>subject_gerund->brainwashing</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+   <ResearchProjectDef>
+    <defName>ExperimentalBrainwashing</defName>
+    <label>experimental brainwashing</label>
+    <description>When propaganda is not enough, mad science usually is. No gaurantee of safety when using experimental products.</description>
+    <baseCost>200</baseCost>
+    <techLevel>Industrial</techLevel>
+	<prerequisites>
+      <li>BrainwashingDevices</li>
+    </prerequisites>
+    <researchViewX>10.00</researchViewX>
+    <researchViewY>6</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->brainwashing devices</li>
+
+        <li>subject_story->perfected the psychology of video propaganda</li>
+        <li>subject_story->published a paper about altering subjects' attitudes using nanobot-based neurotransmitters</li>
+        <li>subject_story->worked in a top-secret state-funded brainwashing program</li>
+
+        <li>subject_gerund->brainwashing</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+  <ResearchProjectDef>
+    <defName>SurgicalBrainwashing</defName>
+    <label>surgical brainwashing</label>
+    <description>When propaganda is not enough, mad science usually is.</description>
+    <baseCost>2000</baseCost>
+    <techLevel>Spacer</techLevel>
+	<prerequisites>
+      <li>ExperimentalBrainwashing</li>
+    </prerequisites>
+    <researchViewX>11.00</researchViewX>
+    <researchViewY>6</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->brainwashing devices</li>
+
+        <li>subject_story->perfected the psychology of video propaganda</li>
+        <li>subject_story->published a paper about altering subjects' attitudes using nanobot-based neurotransmitters</li>
+        <li>subject_story->worked in a top-secret state-funded brainwashing program</li>
+
+        <li>subject_gerund->brainwashing</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+	<RecipeDef>
+		<recipeUsers>
+			<li>Human</li>
+		</recipeUsers>
+		<defName>RecipeBrainwash</defName>
+		<label>brainwash</label>
+		<effectWorking>Surgery</effectWorking>
+		<workSkill>Medicine</workSkill>
+		<workSkillLearnFactor>16</workSkillLearnFactor>
+		<workSpeedStat>MedicalOperationSpeed</workSpeedStat>
+		<description>This operation, deemed torturous by some, provides a clean slate for all your indoctrination needs.</description>
+		<workerClass>Brainwashing.Recipe_Brainwash</workerClass>
+		<jobString>Brainwashing</jobString>
+		<surgeryIgnoreEnvironment>true</surgeryIgnoreEnvironment>
+		<workAmount>400</workAmount>
+		<hideBodyPartNames>true</hideBodyPartNames>
+		<surgerySuccessChanceFactor>100</surgerySuccessChanceFactor>
+		<isViolation>true</isViolation>
+		<anesthetize>false</anesthetize>
+		<dontShowIfAnyIngredientMissing>false</dontShowIfAnyIngredientMissing>
+		<targetsBodyPart>false</targetsBodyPart>
+		<skillRequirements>
+		  <Medicine>6</Medicine>
+		  <Intellectual>6</Intellectual>
+		</skillRequirements>
+		<ingredients>
+		  <li>
+			<filter>
+			  <categories>
+				<li>Brainwashers</li>
+			  </categories>
+			</filter>
+			<count>1</count>
+      </li>
+		</ingredients>
+		<fixedIngredientFilter>
+      <categories>
+        <li>Brainwashers</li>
+      </categories>
+    </fixedIngredientFilter>
+	</RecipeDef>
+	
+	<ThingDef ParentName="ResourceBase" Name="BrainwasherBase" Abstract="True">
+		<graphicData>
+		  <texPath>Things/Item/Health/HealthItem</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<useHitPoints>false</useHitPoints>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<slagDef>ChunkSlagSteel</slagDef>
+		<thingCategories>
+		  <li>Brainwashers</li>
+		</thingCategories>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		  <workSkill>Crafting</workSkill>
+		  <effectWorking>Smith</effectWorking>
+		  <soundWorking>Recipe_Smith</soundWorking>
+		  <recipeUsers>
+			<li>TableMachining</li>
+		  </recipeUsers>
+		  <skillRequirements>
+			<Crafting>5</Crafting>
+			<Intellectual>6</Intellectual>
+		  </skillRequirements>
+		  <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+		  <researchPrerequisite>ExperimentalBrainwashing</researchPrerequisite>
+		</recipeMaker>
+    </ThingDef>
+  <ThingDef ParentName="BrainwasherBase">
+  <defName>BrainwasherMki</defName>
+    <label>brainwasher Mk.1</label>
+    <description>A brainwashing device, used in brainwashing operations. Mk.1 is very simple, and thus is more prone to produce adverse side effects. While all surgical brainwashing methods may cause memory loss and mild to severe psychological discombobulation, Mk.1 is experimental...who knows what we may do by mistake.</description>
+    <descriptionHyperlinks><RecipeDef>RecipeBrainwash</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Steel>40</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+	<statBases>
+		<Mass>0.038</Mass>
+		<MarketValue>300</MarketValue>
+	</statBases>
+  </ThingDef>
+  <ThingDef ParentName="ResourceBase" Name="BrainwasherBase2" Abstract="True">
+		<graphicData>
+		  <texPath>Things/Item/Health/HealthItem</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<useHitPoints>false</useHitPoints>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<slagDef>ChunkSlagSteel</slagDef>
+		<thingCategories>
+		  <li>Brainwashers</li>
+		</thingCategories>
+		<recipeMaker>
+		  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		  <workSkill>Crafting</workSkill>
+		  <effectWorking>Smith</effectWorking>
+		  <soundWorking>Recipe_Smith</soundWorking>
+		  <recipeUsers>
+			<li>TableMachining</li>
+		  </recipeUsers>
+		  <skillRequirements>
+			<Crafting>7</Crafting>
+			<Intellectual>7</Intellectual>
+		  </skillRequirements>
+		  <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+		  <researchPrerequisite>SurgicalBrainwashing</researchPrerequisite>
+		</recipeMaker>
+    </ThingDef>
+  <ThingDef ParentName="BrainwasherBase2">
+  <defName>BrainwasherMkii</defName>
+    <label>brainwasher Mk.2</label>
+    <description>A brainwashing device, used in brainwashing operations. Mk.2 is made of cheaper material than Mk.3, and thus is more likely to cause adverse side effects. All surgical brainwashing methods may cause memory loss and mild to severe psychological discombobulation.</description>
+    <descriptionHyperlinks><RecipeDef>RecipeBrainwash</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Steel>40</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+	  <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+	<statBases>
+		<Mass>0.038</Mass>
+		<MarketValue>600</MarketValue>
+	</statBases>
+  </ThingDef>
+  <ThingDef ParentName="BrainwasherBase2">
+  <defName>BrainwasherMkiii</defName>
+    <label>brainwasher Mk.3</label>
+    <description>A brainwashing device, used in brainwashing operations. Mk.3 is the safest and most advanced of surgical brainwashing methods, but it is not necessarily safe. All surgical brainwashing methods may cause memory loss and mild to severe psychological discombobulation.</description>
+    <descriptionHyperlinks><RecipeDef>RecipeBrainwash</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Plasteel>75</Plasteel>
+	  <Gold>45</Gold>
+      <ComponentIndustrial>1</ComponentIndustrial>
+	  <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+	<statBases>
+		<Mass>0.038</Mass>
+		<MarketValue>1000</MarketValue>
+	</statBases>
+  </ThingDef>
+  <BackstoryDef>
+    <defName>Brainwashed420</defName>  
+    <ignoreIllegalLabelCharacterConfigError>False</ignoreIllegalLabelCharacterConfigError>  
+    <identifier>Brainwashed420</identifier>  
+    <slot>Childhood</slot>  
+    <title>Brainwashed</title>  
+    <titleShort>Brainwashed</titleShort>  
+    <description>[PAWN_nameDef] has no idea what [PAWN_possessive] backstory is. [PAWN_pronoun] has been catastrophically brainwashed.</description>  
+    <requiredWorkTags>None</requiredWorkTags>  
+    <shuffleable>False</shuffleable>  
+  </BackstoryDef>
+  <BackstoryDef>
+    <defName>Brainwashed69</defName>  
+    <ignoreIllegalLabelCharacterConfigError>False</ignoreIllegalLabelCharacterConfigError>  
+    <identifier>Brainwashed69</identifier>  
+    <slot>Adulthood</slot>  
+    <title>Brainwashed</title>  
+    <titleShort>Brainwashed</titleShort>  
+    <description>[PAWN_nameDef] has no idea what [PAWN_possessive] backstory is. [PAWN_pronoun] has been catastrophically brainwashed.</description>  
+    <requiredWorkTags>None</requiredWorkTags> 
+    <shuffleable>False</shuffleable>  
+  </BackstoryDef>
+   <FactionDef ParentName="FactionBase">
+    <defName>Forgotten</defName>
+    <label>forgotten</label>
+    <pawnSingular>brainwashed</pawnSingular>
+    <pawnsPlural>brainwashed</pawnsPlural>
+    <categoryTag>Beggars</categoryTag>
+    <canSiege>false</canSiege>
+    <canStageAttacks>false</canStageAttacks>
+    <hidden>false</hidden>
+    <description>Loose faction representing all those suffering catastrophic brainwashing</description>
+    <factionIconPath>World/WorldObjects/Expanding/SettlementTemporary</factionIconPath>
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+    <colorSpectrum>
+      <li>(0.93, 0.39, 0.32)</li>
+      <li>(0.35, 0.90, 0.57)</li>
+      <li>(0.25, 0.66, 0.94)</li>
+      <li>(0.98, 0.75, 0.37)</li>
+      <li>(0.97, 0.62, 0.52)</li>
+    </colorSpectrum>
+    <generateNewLeaderFromMapMembersOnly>true</generateNewLeaderFromMapMembersOnly>
+    <leaderTitle>leader</leaderTitle>
+    <requiredCountAtGameStart>0</requiredCountAtGameStart>
+    <mustStartOneEnemy>false</mustStartOneEnemy>
+    <techLevel>Neolithic</techLevel>
+    <basicMemberKind>Beggar</basicMemberKind>
+  <xenotypeSet>
+    <xenotypeChances>
+      <Neanderthal MayRequire="Ludeon.RimWorld.Biotech">0.05</Neanderthal>
+      <Hussar MayRequire="Ludeon.RimWorld.Biotech">0.05</Hussar>
+      <Pigskin MayRequire="Ludeon.RimWorld.Biotech">0.05</Pigskin>
+      <Yttakin MayRequire="Ludeon.RimWorld.Biotech">0.05</Yttakin>
+      <Genie MayRequire="Ludeon.RimWorld.Biotech">0.05</Genie>
+      <Dirtmole MayRequire="Ludeon.RimWorld.Biotech">0.05</Dirtmole>
+      <Highmate MayRequire="Ludeon.RimWorld.Biotech">0.025</Highmate>
+    </xenotypeChances>
+  </xenotypeSet>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.95</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+        <commonality>0.05</commonality>
+      </li>
+    </backstoryFilters>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+    <allowedArrivalTemperatureRange>-5~45</allowedArrivalTemperatureRange>
+  </FactionDef>
+  <HediffGiverSetDef>
+    <defName>CatastrophicBrainwash</defName>
+  <hediffGivers>
+	<li Class="HediffGiver_Random">
+	<hediff>Carcinoma</hediff>
+	<mtbDays>37</mtbDays>
+	<partsToAffect>
+		<li>Brain</li>
+	</partsToAffect>
+	</li>
+</hediffGivers>
+</HediffGiverSetDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>PropagandaSpeaker</defName>
+    <label>propaganda speaker</label>
+    <description>State-funded lies</description>
+	<thingClass>Brainwashing.Building_PropagandaSpeaker</thingClass>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/Misc/Loudspeaker/Loudspeaker</texPath>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.5, 1, 0.5)</volume>
+      </shadowData>
+    </graphicData>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <designationCategory>Ideology</designationCategory>
+    <rotatable>false</rotatable>
+    <receivesSignals>true</receivesSignals>
+    <fillPercent>0.35</fillPercent>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Rare</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <size>(1,1)</size>
+    <statBases>
+      <MaxHitPoints>25</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
+      <Mass>5</Mass>
+    </statBases>
+    <researchPrerequisites>
+      <li>BrainwashingDevices</li>
+	  <li>Electricity</li>
+    </researchPrerequisites>
+    <costList>
+      <Steel>30</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+     <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>30</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+  </ThingDef>
+  <ThoughtDef>
+    <defName>SwayedByPropaganda</defName>
+    <thoughtClass>Thought_MemoryObservation</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <stages>
+      <li>
+        <label>was swayed by propaganda</label>
+        <description>It's good to hear the truth.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+    <ThoughtDef>
+    <defName>HeardPropaganda</defName>
+    <thoughtClass>Thought_MemoryObservation</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <stages>
+      <li>
+        <label>subjected to propaganda</label>
+        <description>Trying to avoid it</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <TraitDef>
+    <defName>PropagandaResistant</defName>
+    <degreeDatas>
+      <li>
+        <label>propaganda resistant</label>
+        <description>{PAWN_nameDef} knows propaganda when {PAWN_pronoun} sees it. Proportional to {PAWN_possessive} Intellectual skill (up to level 16), propaganda has less influence on {PAWN_objective}, but {PAWN_pronoun} will receive a mood penalty from it.</description>
+        <skillGains>
+          <Intellectual>2</Intellectual>
+		  <Social>3</Social>
+        </skillGains>
+      </li>
+    </degreeDatas>
+    <conflictingTraits>
+    </conflictingTraits>
+    <requiredWorkTags>
+      <li>Social</li>
+    </requiredWorkTags>
+  </TraitDef>
+  <RitualPatternDef>
+    <defName>HoldMass_Pattern</defName>
+    <ritualBehavior>HoldMass_Behaviour</ritualBehavior>
+    <ritualTargetFilter>AltarOrRitualSpot</ritualTargetFilter>
+    <ritualObligationTargetFilter>RitualSpotOrAltar</ritualObligationTargetFilter>
+    <ritualExplanation>In case of success, their certainty will be reduced or they will convert immediately. If it backfires, their certainty in own beliefs will increase.</ritualExplanation>
+    <ritualOutcomeEffect>HoldMass_Outcome</ritualOutcomeEffect>
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+    <canMergeGizmosFromDifferentIdeos>false</canMergeGizmosFromDifferentIdeos>
+  </RitualPatternDef>
+  <RitualBehaviorDef>
+    <defName>HoldMass_Behaviour</defName>
+	<workerClass>Brainwashing.RitualBehaviorWorker_HoldMass</workerClass>
+    <durationTicks>4500</durationTicks>
+    <spectatorsLabel>Participants</spectatorsLabel>
+    <spectatorGerund>participate</spectatorGerund>
+    <roles Inherit="False">
+      <li Class="RitualRoleTag">
+        <label>speaker</label>
+        <id>moralist</id>
+        <tag>Moralist</tag>
+        <precept>IdeoRole_Moralist</precept>
+        <required>True</required>
+        <maxCount>1</maxCount>
+        <countsAsParticipant>False</countsAsParticipant>
+        <allowChild>false</allowChild>
+      </li>
+    </roles>
+    <stages>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers>
+          <li Class="StageEndTrigger_RolesArrived">
+            <roleIds>
+              <li>moralist</li>
+            </roleIds>
+          </li>
+        </endTriggers>
+        <roleBehaviors>
+          <li>
+            <roleId>moralist</roleId>
+            <dutyDef>ArriveToCell</dutyDef>
+            <customPositions>
+              <li Class="RitualPosition_BehindThingCenter" />
+            </customPositions>
+          </li>
+        </roleBehaviors>
+      </li>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage">
+            <percentage>1</percentage>
+          </li>
+        </endTriggers>
+	  <roleBehaviors>
+          <li>
+            <roleId>moralist</roleId>
+            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
+            <speakerInteraction>Speech_Conversion</speakerInteraction>
+            <customPositions>
+              <li Class="RitualPosition_Lectern">
+                <maxDistanceToFocus>5</maxDistanceToFocus>
+              </li>
+              <li Class="RitualPosition_OnInteractionCell" />
+            </customPositions>
+          </li>
+        </roleBehaviors>
+		</li>
+    </stages>
+  </RitualBehaviorDef>
+  <RitualOutcomeEffectDef>
+    <defName>HoldMass_Outcome</defName>
+    <description>If it goes well, everyone will gain some certainty towards the moralist's ideology. If it goes poorly, everyone may lose some certainty.</description>
+    <workerClass>Brainwashing.RitualOutcomeEffectWorker_HoldMass</workerClass>
+    <comps>
+      <li Class="RitualOutcomeComp_RoomStat">
+        <label>room impressiveness</label>
+        <statDef>Impressiveness</statDef>
+        <curve>
+          <points>
+            <li>0,  0</li>
+            <li>50,  0.1</li>
+            <li>120, 0.2</li>
+          </points>
+        </curve>
+      </li>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>participant count</label>
+        <curve>
+          <points>
+            <li>(1,  0.0)</li>
+            <li>(5,  0.3)</li>
+            <li>(10, 0.4)</li>
+          </points>
+        </curve>
+      </li>
+      <li Class="RitualOutcomeComp_PawnStatScaled">
+        <label>{PAWN_labelShort}'s social impact</label>
+        <labelAbstract>speaker's social impact</labelAbstract>
+        <roleId>moralist</roleId>
+        <statDef>SocialImpact</statDef>
+        <curve>
+          <points>
+            <li>(0.2,  0.0)</li>
+            <li>(0.6,  0.18)</li>
+            <li>(1.0, 0.25)</li>
+            <li>(1.5, 0.3)</li>
+          </points>
+        </curve>
+      </li>
+    </comps>
+    <outcomeChances>
+      <li>
+        <label>Dreadful</label>
+        <chance>0.02</chance>
+		<memory>DreadfulMass</memory>
+        <ideoCertaintyOffset>-0.2</ideoCertaintyOffset>
+        <description>The {0} was dreadful! The speaker must have made that all up. We all left feeling disillusioned. Each attending colonist lost between 10 and 30 certainty points.</description>
+        <positivityIndex>-2</positivityIndex>
+      </li>
+      <li>
+        <label>Weird</label>
+        <chance>0.25</chance>
+		<memory>WeirdMass</memory>
+        <ideoCertaintyOffset>0</ideoCertaintyOffset>
+        <description>The {0} was weird. Most of the arguments were unclear, and the speech included a rambling tangent about the speaker's childhood trauma? Why? We should have stayed in bed today. Nobody will remember this.</description>
+        <positivityIndex>-1</positivityIndex>
+      </li>
+      <li>
+        <label>Great</label>
+        <chance>0.725</chance>
+        <ideoCertaintyOffset>0.4</ideoCertaintyOffset>
+        <memory>GreatMass</memory>
+        <description>The {0} was Great. The {0} allowed us to remember fundamental and transcendental things about ourselves that we didn't know we had forgotten. Each attending colonist gained between 30 and 50 certainty points.</description>
+        <positivityIndex>1</positivityIndex>
+      </li>
+      <li>
+        <label>Masterful</label>
+        <chance>0.005</chance>
+        <ideoCertaintyOffset>0.9</ideoCertaintyOffset>
+        <memory>MasterfulMass</memory>
+        <description>The {0} was masterful! It was a core memory and a bonding experience for all. You just had to be there. Truly a great moment for our colony. Each attending colonist gained between 80 and 100 certainty points.</description>
+        <positivityIndex>2</positivityIndex>
+      </li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+  <PreceptDef>
+    <defName>HoldMass_Precept</defName>
+    <label>Mass</label>
+    <description>Reassure/convert everyone.</description>
+    <issue>Ritual</issue>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <visible>false</visible>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <selectionWeight>1.0</selectionWeight>
+    <ritualPatternBase>HoldMass_Pattern</ritualPatternBase>
+    <iconPath>UI/Abilities/ConversionRitual</iconPath>
+    <useCooldownFromAbilityGroupDef>Moralist</useCooldownFromAbilityGroupDef>
+    <sourcePawnRoleDef>IdeoRole_Moralist</sourcePawnRoleDef>
+    <sourceAbilityDef>HoldMass_Ability</sourceAbilityDef>
+    <classicExtra>true</classicExtra>
+  </PreceptDef>
+  <AbilityDef ParentName="SpeechBase">
+    <defName>HoldMass_Ability</defName>
+    <label>hold mass</label>
+    <description>Hold a mass to bring people together under your shared beliefs. If it goes well, everyone will gain some certainty towards the moralist's ideology. If it goes poorly, everyone may lose some certainty. \n\nTo start this ritual at a specific place, select a ritual spot or matching altar/ideogram.</description>
+    <iconPath>UI/Abilities/ConversionRitual</iconPath>
+    <groupDef>Moralist</groupDef>
+    <overrideGroupCooldown>True</overrideGroupCooldown>
+    <cooldownTicksRange>480000</cooldownTicksRange>
+    <targetRequired>False</targetRequired>
+    <gizmoClass>Command_Ability</gizmoClass>
+    <comps>
+      <li Class="CompProperties_AbilityStartConversion">
+        <ritualDef>HoldMass_Precept</ritualDef>
+      </li>
+    </comps>
+  </AbilityDef>
+  <ThoughtDef>
+    <defName>MasterfulMass</defName>
+    <thoughtClass>Thought_AttendedRitual</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>masterful mass</label>
+        <description>Masterful! This guy can speak about things and stuff for sure.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>GreatMass</defName>
+    <thoughtClass>Thought_AttendedRitual</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>great mass</label>
+        <description>Mass was nice today.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>DreadfulMass</defName>
+    <thoughtClass>Thought_AttendedRitual</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>dreadful mass</label>
+        <description>Disillusioning.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>WeirdMass</defName>
+    <thoughtClass>Thought_AttendedRitual</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>weird mass</label>
+        <description>What was that??</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>
